@@ -1,0 +1,19 @@
+# Node.js specific
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Generated files
+dist/
+coverage/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE settings (add more if needed)
+.vscode/
+.idea/
+
+# Environment configuration (adjust if necessary)
+.env

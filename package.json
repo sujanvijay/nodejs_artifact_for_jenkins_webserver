@@ -1,0 +1,25 @@
+{
+    "name": "calculator-app",
+    "version": "1.0.0",
+    "description": "Calculator Web App",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "node src/server.js"
+    },
+    "author": "Srivarshith Daladuli",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.22.1",
+        "path": "^0.12.7"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/srivarshithdaladuli/Calculator-Using-NodeJS.git"
+    },
+    "keywords": [],
+    "type": "commonjs",
+    "bugs": {
+        "url": "https://github.com/srivarshithdaladuli/Calculator-Using-NodeJS/issues"
+    },
+    "homepage": "https://github.com/srivarshithdaladuli/Calculator-Using-NodeJS#readme"
+}
