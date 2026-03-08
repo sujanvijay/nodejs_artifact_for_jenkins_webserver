@@ -21,9 +21,9 @@ pipeline {
                 sh '''
                 docker run -d --name nodecontainer nodeapp
                 sleep 60
-                docker stop nodecontainer
-                docker rm nodecontainer
-                '''
+                // docker stop nodecontainer
+                // docker rm nodecontainer
+                // '''
             }
         }
     }
