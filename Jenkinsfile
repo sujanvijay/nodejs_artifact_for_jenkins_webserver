@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    environment {
+        IMAGE_NAME = "sujanvijay/nodejs-app"
+        CONTAINER_NAME = "nodeapp-container"
+    }
+
     stages {
 
         stage('Checkout Code') {
@@ -10,21 +15,33 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Install Dependencies') {
             steps {
-                sh 'docker build -t nodeapp .'
+                sh 'npm install'
             }
         }
 
-        stage('Run Container for 1 Minute') {
+        stage('Create Artifact') {
             steps {
-                sh '''
-                docker run -d --name nodecontainer nodeapp
-                // sleep 60
-                // docker stop nodecontainer
-                // docker rm nodecontainer
-                // '''
+                sh 'npm pack'
             }
         }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t $IMAGE_NAME:latest .'
+            }
+        }
+
+
+        stage('Deploy Container') {
+            steps {
+                sh '''
+                docker rm -f $CONTAINER_NAME || true
+                docker run -d -p 3000:3000 --name $CONTAINER_NAME $IMAGE_NAME:latest
+                '''
+            }
+        }
+
     }
 }
