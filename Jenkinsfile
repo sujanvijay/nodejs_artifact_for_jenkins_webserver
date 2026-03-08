@@ -1,3 +1,5 @@
+// need to install this in jenkins server before running the pipe - sudo yum install libatomic -y
+
 pipeline {
     agent any
 
@@ -43,6 +45,9 @@ pipeline {
                 sh '''
                 docker rm -f $CONTAINER_NAME || true
                 docker run -d -p 3000:3000 --name $CONTAINER_NAME $IMAGE_NAME:latest
+                sleep 60
+                docker stop nodecontainer
+                docker rm nodecontainer
                 '''
             }
         }
